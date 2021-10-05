@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,
+        ul,
+        ol,
+        li,
+        table,
+        thead,
+        tbody,
+        tr,
+        th,
+        td {
+            margin: 0;
+            padding: 0;
+            font-weight: normal;
+            color: #666;
+            font-family: 'Malgun Gothic', '맑은고딕', sans-serif;
+            font-size: 12px;
+            line-height: 1.5;
+            letter-spacing: -0.03em;
+        }
+
+        table {
+            font-size: 12px;
+            color: #666;
+            width: 100%;
+            border: 0;
+            border-spacing: 0px;
+            border-collapse: collapse;
+        }
+
+        thead {
+            display: table-header-group;
+            vertical-align: middle;
+            border-color: inherit;
+        }
+
+        tr {
+            display: table-row;
+            vertical-align: inherit;
+            border-color: inherit;
+        }
+
+        .tbl_type1 tbody th {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            text-align: left;
+        }
+
+        .tbl_type1 th,
+        .tbl_type1 td {
+            border-bottom: 1px solid #f1f2f4;
+        }
+
+        .tbl_type1 th,
+        .tbl_type1 td {
+            vertical-align: middle;
+        }
+
+        .tbl_type1 thead th,
+        .tbl_type1.row tbody th {
+            padding: 6px 0;
+            font-size: 20px;
+            font-weight: bold;
+            color: #68b3ce;
+            text-align: left;
+        }
+
+        .tbl_type1 td {
+            padding: 9px 10px 9px 0;
+            font-size: 14px;
+            color: #333;
+            vertical-align: top;
+        }
+
+        .hidden {
+            position: absolute !important;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(1px 1px 1px 1px);
+            clip: rect(1px, 1px, 1px, 1px);
+        }
+
+        tbody {
+            display: table-row-group;
+            vertical-align: middle;
+            border-color: inherit;
+        }
+
+        .tbl_type1 .desc_list li {
+            font-size: 14px;
+            color: #333;
+        }
+
+        li {
+            display: list-item;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        .desc_list li,
+        p.bul {
+            padding-left: 8px;
+            text-indent: -8px;
+        }
+
+        .desc_list li:before,
+        p.bul:before {
+            display: inline-block;
+            content: '';
+            background: #919191;
+            width: 2px;
+            height: 2px;
+            margin: 0 6px 3px 0;
+        }
+
+        .accent2 {
+            color: #5754b5;
+        }
+
+        .td_desc {
+            color: #999;
+        }
+
+        .txt_black2 {
+            color: #000 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tbl_type1">
+        <table>
+            <caption class="hidden">고속버스 프리패스 구매안내 <br>
+                해당 상품 종류는 며칠인지에 따라 금액이 다르게 측정되어 있습니다.
+            </caption>
+            <colgroup>
+                <col style="width: 35%;">
+                <col style="width: auto;">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th scope="col">구분</th>
+                    <th scope="col">내용</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">발행처</th>
+                    <td lang="en">KOBUS</td>
+                </tr>
+                <tr>
+                    <th scope="row">이용권종</th>
+                    <td>일반권</td>
+
+                </tr>
+                <tr>
+                    <th scope="row">버스이용등급</th>
+                    <td><span class="accent2"><strong>우등, 일반고속(프리미엄 제외)</strong></span></td>
+
+                </tr>
+                <tr>
+                    <th scope="row">구매 매체</th>
+                    <td>홈페이지 / 모바일 <span class="td_desc">(*신용카드로만 구매 가능)</span></td>
+                </tr>
+                <tr>
+                    <th scope="row">상품 종류</th>
+                    <td>
+                        <ul class="desc_list">
+                            <li>4일권 (금~일 제외) &nbsp;&nbsp;<span class="txt_black2">75,000원</span></li>
+                            <li>3일권 (금~일 포함) &nbsp;&nbsp;<span class="txt_black2">80,000원 ( 신규시행 )</span></li>
+                            <li>5일권 (금~일 포함) &nbsp;&nbsp;<span class="txt_black2">100,000원</span></li>
+                            <li>7일권 (금~일 포함) &nbsp;&nbsp;<span class="txt_black2">120,000원</span></li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
