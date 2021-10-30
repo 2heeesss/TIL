@@ -100,3 +100,29 @@ HashTable.prototype.print = function () {
     }
 };
 ```
+
+# 해시 충돌 문제 해결
+
+- 기존방법(loselose)을 사용해서 해시함수를 만들었을 때 해시충돌이 발생할 수도 있다.
+
+```
+출력
+key: Ana -> index: 13
+key: Donnie -> index: 13
+```
+
+- djb2 해시알고리즘을 사용해서 충돌문제를 해결
+
+```jsx
+// djb2 해시 사이즈
+const HASH_SIZE = 1013;
+
+// dj2b 해시 함수
+HashTable.prototype.hashcode = function (key) {
+    let hash = 5381;
+    for (let i = 0; i < key.length; i++) {
+        hash = hash * 33 + key.charCodeAt(i);
+    }
+    return hash % HASH_SIZE;
+};
+```
