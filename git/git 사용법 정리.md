@@ -14,7 +14,7 @@
     - PR 보낼 곳을 추가하기
     - 원격 저장소의 git 주소는 **fork 하기 전 원래 저장소**
         ```bash
-            git remote add upstrean https://fork전_원래_저장소
+            git remote add upstream https://fork전_원래_저장소
         ```
 4. PR용 branch 생성하기
     - 코드를 수정하고 PR을 보낼 용도로 사용할 새 branch 설정
