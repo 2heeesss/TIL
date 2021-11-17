@@ -25,6 +25,8 @@ const render = array => array.reduce(
   ''
 );
 
+const getValues = (todos, key) => todos.map(obj => obj[key]);
+
 describe('html 생성', () => {
   test('기본예제1', () => {
     expect(render(todos1)).toEqual(
@@ -69,5 +71,23 @@ describe('html 생성', () => {
 </li>
 `
     );
+  });
+});
+
+describe('특정 프로퍼티 값 추출', () => {
+  test('기본예제1', () => {
+    expect(getValues(todos1, 'id')).toEqual([3, 2, 1]);
+  });
+
+  test('기본예제2', () => {
+    expect(getValues(todos2, 'content')).toEqual(['JAVA', 'HTML', 'CSS', 'Javascript']);
+  });
+
+  test('기본예제3', () => {
+    expect(getValues(todos3, 'id')).toEqual([99, 0]);
+  });
+
+  test('기본예제4', () => {
+    expect(getValues(todos1, 'completed')).toEqual([false, true, false]);
   });
 });
