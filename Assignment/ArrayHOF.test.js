@@ -16,16 +16,14 @@ const todos3 = [
   { id: 0, content: 'C++', completed: false },
 ];
 
-function render(array) {
-  return array.reduce(
-    (acc, cur) => acc
+const render = array => array.reduce(
+  (acc, cur) => acc
       + `<li id="${cur.id}">
   <label><input type="checkbox"${cur.completed ? ' checked' : ''}>${cur.content}</label>
 </li>
 `,
-    ''
-  );
-}
+  ''
+);
 
 describe('html 생성', () => {
   test('기본예제1', () => {
