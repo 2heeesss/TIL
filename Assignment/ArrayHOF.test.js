@@ -27,6 +27,25 @@ const render = array => array.reduce(
 
 const getValues = (todos, key) => todos.map(obj => obj[key]);
 
+const sortBy = (todos, key) => {
+  if (typeof todos[0][key] === 'string') {
+    return todos.sort((firstObj, secondObj) => {
+      if (firstObj[key].toUpperCase() < secondObj[key].toUpperCase()) {
+        return -1;
+      }
+      return 1;
+    });
+  } if (typeof todos[0][key] === 'boolean') {
+    return todos.sort((firstObj, secondObj) => {
+      if (+firstObj[key] === +secondObj[key]) {
+        return -1;
+      }
+      return +firstObj[key] - +secondObj[key];
+    });
+  }
+  return todos.sort((firstObj, secondObj) => firstObj[key] - secondObj[key]);
+};
+
 describe('html 생성', () => {
   test('기본예제1', () => {
     expect(render(todos1)).toEqual(
@@ -89,5 +108,48 @@ describe('특정 프로퍼티 값 추출', () => {
 
   test('기본예제4', () => {
     expect(getValues(todos1, 'completed')).toEqual([false, true, false]);
+  });
+});
+
+describe('프로퍼티 정렬', () => {
+  test('기본예제1', () => {
+    expect(sortBy(todos1, 'id')).toEqual(
+      [
+        { id: 1, content: 'Javascript', completed: false },
+        { id: 2, content: 'CSS', completed: true },
+        { id: 3, content: 'HTML', completed: false }
+      ]
+    );
+  });
+  test('기본예제2', () => {
+    expect(sortBy(todos1, 'id')).toEqual(
+      [
+        { id: 1, content: 'Javascript', completed: false },
+        { id: 2, content: 'CSS', completed: true },
+        { id: 3, content: 'HTML', completed: false }
+      ]
+    );
+  });
+  test('기본예제3', () => {
+    expect(sortBy(todos1, 'content')).toEqual(
+      [
+        { id: 2, content: 'CSS', completed: true },
+        { id: 3, content: 'HTML', completed: false },
+        { id: 1, content: 'Javascript', completed: false }
+      ]
+    );
+  });
+  test('기본예제4', () => {
+    expect(sortBy(todos1, 'completed')).toEqual(
+      [
+        { id: 1, content: 'Javascript', completed: false },
+        { id: 3, content: 'HTML', completed: false },
+        { id: 2, content: 'CSS', completed: true }
+      ]
+    );
+  });
+
+  test('확인', () => {
+    expect(sortBy([{ content: 'A' }, { content: 'C' }, { content: 'B' }], 'content')).toEqual([{ content: 'A' }, { content: 'B' }, { content: 'C' }]);
   });
 });
