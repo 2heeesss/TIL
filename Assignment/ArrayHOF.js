@@ -13,4 +13,7 @@ const render = todos => todos.reduce(
   ''
 );
 
+const getValues = (todos, key) => todos.map(obj => obj[key]);
+
 render(todos);
+getValues(todos);
