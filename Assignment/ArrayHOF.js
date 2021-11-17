@@ -15,5 +15,25 @@ const render = todos => todos.reduce(
 
 const getValues = (todos, key) => todos.map(obj => obj[key]);
 
+const sortBy = (todos, key) => {
+  if (typeof todos[0][key] === 'string') {
+    return todos.sort((firstObj, secondObj) => {
+      if (firstObj[key].toUpperCase() < secondObj[key].toUpperCase()) {
+        return -1;
+      }
+      return 1;
+    });
+  } if (typeof todos[0][key] === 'boolean') {
+    return todos.sort((firstObj, secondObj) => {
+      if (+firstObj[key] === +secondObj[key]) {
+        return -1;
+      }
+      return +firstObj[key] - +secondObj[key];
+    });
+  }
+  return todos.sort((firstObj, secondObj) => firstObj[key] - secondObj[key]);
+};
+
 render(todos);
 getValues(todos);
+sortBy(todos);
