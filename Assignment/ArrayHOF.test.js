@@ -1,3 +1,10 @@
+const newObj = { id: 4, content: 'Test', completed: false };
+
+const todos = [
+  { id: 3, content: 'HTML', completed: false },
+  { id: 2, content: 'CSS', completed: true },
+  { id: 1, content: 'Javascript', completed: false },
+];
 const todos1 = [
   { id: 3, content: 'HTML', completed: false },
   { id: 2, content: 'CSS', completed: true },
@@ -35,7 +42,9 @@ const sortBy = (todos, key) => {
       }
       return 1;
     });
-  } if (typeof todos[0][key] === 'boolean') {
+  }
+
+  if (typeof todos[0][key] === 'boolean') {
     return todos.sort((firstObj, secondObj) => {
       if (+firstObj[key] === +secondObj[key]) {
         return -1;
@@ -45,6 +54,8 @@ const sortBy = (todos, key) => {
   }
   return todos.sort((firstObj, secondObj) => firstObj[key] - secondObj[key]);
 };
+
+const addTodo = (todos, newTodo) => [newTodo, ...todos];
 
 describe('html 생성', () => {
   test('기본예제1', () => {
@@ -151,5 +162,18 @@ describe('프로퍼티 정렬', () => {
 
   test('확인', () => {
     expect(sortBy([{ content: 'A' }, { content: 'C' }, { content: 'B' }], 'content')).toEqual([{ content: 'A' }, { content: 'B' }, { content: 'C' }]);
+  });
+});
+
+describe('새로운 요소 추가', () => {
+  test(',,,', () => {
+    expect(addTodo(todos, newObj)).toEqual(
+      [
+        { id: 4, content: 'Test', completed: false },
+        { id: 3, content: 'HTML', completed: false },
+        { id: 2, content: 'CSS', completed: true },
+        { id: 1, content: 'Javascript', completed: false }
+      ]
+    );
   });
 });
