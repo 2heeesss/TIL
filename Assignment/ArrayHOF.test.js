@@ -209,3 +209,20 @@ describe('특정 요소의 프로퍼티 값 반전', () => {
     );
   });
 });
+
+const toggleCompletedAll = todos => todos.map(obj => {
+  obj.completed = true;
+  return obj;
+});
+
+describe('모든 요소의 completed 프로퍼티 값을 true로 설정', () => {
+  test(' 배열의 모든 요소의 completed 프로퍼티 값을 true로 설정하는 함수', () => {
+    expect(toggleCompletedAll(todos)).toEqual(
+      [
+        { id: 3, content: 'HTML', completed: true },
+        { id: 2, content: 'CSS', completed: true },
+        { id: 1, content: 'Javascript', completed: true }
+      ]
+    );
+  });
+});
