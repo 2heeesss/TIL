@@ -190,3 +190,22 @@ describe('특정 요소 삭제', () => {
     );
   });
 });
+
+const toggleCompletedById = (todos, id) => todos.map(obj => {
+  if (obj.id === id) {
+    obj.completed = !obj.completed;
+  }
+  return obj;
+});
+
+describe('특정 요소의 프로퍼티 값 반전', () => {
+  test('배열의 특정 요소의 id를 인수로 전달하면 해당 요소의 completed 프로퍼티 값을 반전', () => {
+    expect(toggleCompletedById(todos, 2)).toEqual(
+      [
+        { id: 3, content: 'HTML', completed: false },
+        { id: 2, content: 'CSS', completed: false },
+        { id: 1, content: 'Javascript', completed: false }
+      ]
+    );
+  });
+});
