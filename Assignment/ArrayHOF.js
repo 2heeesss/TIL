@@ -34,6 +34,19 @@ const sortBy = (todos, key) => {
   return todos.sort((firstObj, secondObj) => firstObj[key] - secondObj[key]);
 };
 
-render(todos);
-getValues(todos);
-sortBy(todos);
+const addTodo = (todos, newTodo) => [newTodo, ...todos];
+
+const removeTodo = (todos, id) => todos.filter(val => val.id !== id);
+
+const toggleCompletedById = (todos, id) => todos.map(obj => {
+  if (obj.id === id) {
+    obj.completed = !obj.completed;
+  }
+  return obj;
+});
+
+const countCompletedTodos = todos => todos.reduce((acc, cur) => {
+  let cnt = acc;
+  cnt = cur.completed === true ? cnt++ : cnt;
+  return cnt;
+}, 0);

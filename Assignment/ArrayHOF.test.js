@@ -226,3 +226,32 @@ describe('모든 요소의 completed 프로퍼티 값을 true로 설정', () => 
     );
   });
 });
+
+const tt = [
+  { id: 3, content: 'HTML', completed: false },
+  { id: 2, content: 'CSS', completed: true },
+  { id: 1, content: 'Javascript', completed: false },
+];
+
+const countCompletedTodos = todos => todos.reduce((acc, cur) => {
+  let cnt = acc;
+  cnt = cur.completed ? ++cnt : cnt;
+  return cnt;
+}, 0);
+
+describe('completed 프로퍼티의 값이 true인 요소의 갯수 구하기', () => {
+  test('todos 배열에서 완료(completed: true)한 할일의 갯수를 구하는 함수를 작성하라.', () => {
+    expect(countCompletedTodos(tt)).toBe(1);
+  });
+});
+
+const getMaxId = todos => (todos.length ? Math.max(...todos.map(obj => obj.id)) : 0);
+
+describe('id 프로퍼티의 값 중에서 최대값 구하기', () => {
+  test('배열의 id 프로퍼티 값 중에서 최대값을 구해 반환.', () => {
+    expect(getMaxId(todos)).toBe(3);
+  });
+  test('빈 배열은 0을 반환', () => {
+    expect(getMaxId([])).toBe(0);
+  });
+});
