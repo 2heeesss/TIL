@@ -50,3 +50,12 @@ const countCompletedTodos = todos => todos.reduce((acc, cur) => {
   cnt = cur.completed === true ? cnt++ : cnt;
   return cnt;
 }, 0);
+
+const countCompletedTodos = todos => todos.reduce((acc, cur) => {
+  let cnt = acc;
+  cnt = cur.completed ? ++cnt : cnt;
+  return cnt;
+}, 0);
+
+
+const getMaxId = todos => (todos.length ? Math.max(...todos.map(obj => obj.id)) : 0);
