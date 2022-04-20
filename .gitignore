@@ -1,2 +1,6 @@
 node_modules/
 .DS_Store
+.eslintrc.json
+package.json
+package-lock.json
+PStest.js
